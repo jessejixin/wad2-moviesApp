@@ -88,7 +88,7 @@ const movies = [sample, sample, sample, sample, sample, sample, sample];
 
 const App = () => {
     return (
-        <MovieDetailsPage movie={sample} images={images} />
+        <MovieDetailsPage movie={sample} images={images}/>
         );
   };
 
