@@ -17,6 +17,23 @@ const useStyles = makeStyles({
 const MovieListPage = (props) => {
   const classes = useStyles();
   const [movies, setMovies] = useState([]);
+  const [nameFilter, setNameFilter] = useState("");
+  const [genreFilter, setGenreFilter] = useState("0");
+
+  const genreId = Number(genreFilter);
+
+  let displayedMovies = movies
+    .filter((m) => {
+      return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+    })
+    .filter((m) => {
+      return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+    });
+
+  const handleChange = (type, value) => {
+    if (type === "name") setNameFilter(value);
+    else setGenreFilter(value);
+  };
 
   useEffect(() => {
     fetch(
@@ -41,9 +58,14 @@ const MovieListPage = (props) => {
       </Grid>
       <Grid item container spacing={5}>
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
-          <FilterCard />
+           <FilterCard
+              onUserInput={handleChange}
+              titleFilter={nameFilter}
+              genreFilter={genreFilter}
+            />
         </Grid>
-        <MovieList movies={movies}></MovieList>
+        <MovieList movies={displayedMovies}>
+        </MovieList>
       </Grid>
     </Grid>
   );
