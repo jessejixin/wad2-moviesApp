@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect}  from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -26,14 +26,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// export default function FilterMoviesCard(props) {
+//   const classes = useStyles();
+
+//   const genres = [
+//     {id: 1, name: "Animation"},
+//     {id: 2, name: "Comedy"},
+//     {id: 3, name: "Thriller"}
+//   ]
 export default function FilterMoviesCard(props) {
   const classes = useStyles();
+  const [genres, setGenres] = useState([{ id: '0', name: "All" }])
 
-  const genres = [
-    {id: 1, name: "Animation"},
-    {id: 2, name: "Comedy"},
-    {id: 3, name: "Thriller"}
-  ]
+  useEffect(() => {
+    fetch(
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
+        process.env.REACT_APP_TMDB_KEY
+    )
+      .then(res => res.json())
+      .then(json => {
+        // console.log(json.genres) 
+        return json.genres
+      })
+      .then(apiGenres => {
+        setGenres([genres[0], ...apiGenres]);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleChange = (e, type, value) => {
+    e.preventDefault()
+    // Completed later
+  };
+  const handleTextChange = e => {
+    handleChange(e, "name", e.target.value)
+  }
+  const handleGenreChange = e => {
+    handleChange(e, "genre", e.target.value)
+  };
+
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -47,13 +78,17 @@ export default function FilterMoviesCard(props) {
           id="filled-search"
           label="Search field"
           type="search"
+          value={props.titleFilter}
           variant="filled"
+          onChange={handleTextChange}
         />
         <FormControl className={classes.formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
             labelId="genre-label"
             id="genre-select"
+            value={props.genreFilter}
+            onChange={handleGenreChange}
           >
             {genres.map((genre) => {
               return (
