@@ -36,5 +36,8 @@ describe("Movie Details Page", () => {
           });
         });
     });
+    it("should display the movie posters on the left-hand side", ()=>{
+      cy.get()
+    });
     });
   });
