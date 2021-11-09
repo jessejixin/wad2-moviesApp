@@ -1,0 +1,23 @@
+# Node docker image with Cypress and Chrome pre-installed
+image: cypress/browsers:node12.0.0-chrome73
+
+# Pipeline
+stages:
+  - install
+  - build
+  - test
+
+# Jobs 
+
+install_dependencies:
+  stage: install
+  script:
+    - npm ci
+  artifacts:
+    paths:
+      - node_modules/
+
+bundle_app:
+  stage: build
+  script:
+    - npm run build
