@@ -35,4 +35,27 @@ describe("Navigation", () => {
       cy.get("h3").contains(movies[0].title);
     });
   });
+  describe("The site header", () => {
+    describe("when the viewport is desktop scale", () => {
+      it("should allow navigation to the Favourites page from the link", () => {
+        cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
+        cy.url().should("include", `/favorites`);
+        cy.get("h3").contains("Favourite Movies");
+      });
+    });
+    describe(
+      "when the viewport is a mobile",
+      {
+        viewportHeight: 896,
+        viewportWidth: 414,
+      },
+      () => {
+        it("should allow navigation to the Favourites page from the dropdown menu", () => {
+          cy.get("header").find("button").click();
+          cy.get("li").eq(1).click();
+          cy.url().should("include", `/favorites`);
+          cy.get("h3").contains("Favourite Movies");
+        });
+      });
+  });
 });
