@@ -48,6 +48,7 @@
     "@storybook/node-logger": "^6.2.9",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.9",
-    "cypress": "^8.7.0"
+    "cypress": "^8.7.0",
+    "start-server-and-test": "^1.14.0"
   }
 }
