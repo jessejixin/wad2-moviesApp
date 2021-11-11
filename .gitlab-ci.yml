@@ -50,7 +50,7 @@ exercise_job:
   only:
     - main
   script:
-    - bundle exec rspec
+    - echo "If the exercise job created successfully"
 
 
 e2etest:    
