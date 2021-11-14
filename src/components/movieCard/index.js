@@ -10,12 +10,14 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
+import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
 // import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
-import img from '../../images/film-poster-placeholder.png';
+import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -27,17 +29,29 @@ const useStyles = makeStyles({
 
 export default function MovieCard({ movie, action }) {
   const classes = useStyles();
-  // const { favorites, addToFavorites } = useContext(MoviesContext);
   const { favorites } = useContext(MoviesContext);
+  const { towatches } = useContext(MoviesContext);
+
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
   } else {
     movie.favorite = false
   }
 
-  // const handleAddToFavorite = (e) => {
+  if (towatches.find((id) => id === movie.id)) {
+    movie.towatch = true;
+  } else {
+    movie.towatch = false
+  }
+
+  // const handleAddToFavorites = (e) => {
   //   e.preventDefault();
   //   addToFavorites(movie);
+  // };
+
+  // const handleAddToWatches = (e) => {
+  //   e.preventDefault();
+  //   addToWatches(movie);
   // };
 
   return (
@@ -49,7 +63,11 @@ export default function MovieCard({ movie, action }) {
           <Avatar className={classes.avatar}>
             <FavoriteIcon />
           </Avatar>
-        ) : null
+        ) : (movie.towatch ? (
+          <Avatar className={classes.avatar}>
+            <PlaylistAddCheckIcon />
+          </Avatar>
+        ) : null)
       }
       title={
         <Typography variant="h5" component="p">
