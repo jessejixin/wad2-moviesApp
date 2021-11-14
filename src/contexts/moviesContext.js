@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { getMovies, getUpcomingMovies } from "../api/tmdb-api";
+
 
 export const MoviesContext = React.createContext(null);
 
