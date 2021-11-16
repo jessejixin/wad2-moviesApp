@@ -38,8 +38,8 @@ bundle_app:
   script:
     - npm run build
   artifacts:
-  paths:
-    - build/ 
+    paths:
+      - build/ 
 
 build_jobX:
   stage: build
