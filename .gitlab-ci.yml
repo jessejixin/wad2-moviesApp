@@ -29,9 +29,6 @@ install_dependencies:
   stage: install
   script:
     - npm ci --cache .npm --prefer-offline
-  artifacts:
-    paths:
-      - node_modules/
 
 bundle_app:
   stage: build
