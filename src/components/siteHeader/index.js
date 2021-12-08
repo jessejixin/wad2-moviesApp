@@ -5,14 +5,19 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
+import HomeIcon from '@material-ui/icons/Home';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import UpcomingIcon from '@material-ui/icons/Event';
+import NowPlayingIcon from '@material-ui/icons/EventAvailable';
+import TopRateIcon from '@material-ui/icons/Star';
+import PopularIcon from '@material-ui/icons/Whatshot';
+import MustWatchIcon from '@material-ui/icons/ListAlt';
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
@@ -28,13 +33,13 @@ const SiteHeader = ( { history }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const menuOptions = [
-    { label: "Home", path: "/" },
-    { label: "Top Rated", path: "/movies/top_rated" },
-    { label: "Popular", path: "/movies/popular" },
-    { label: "Now Playing", path: "/movies/now_playing" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Favorites", path: "/movies/favorites" },
-    { label: "Mustwatch", path: "/movies/mustwatch" },
+    { label: <HomeIcon></HomeIcon> , path: "/" },
+    { label: <TopRateIcon></TopRateIcon>, path: "/movies/top_rated" },
+    { label: <PopularIcon></PopularIcon>, path: "/movies/popular" },
+    { label: <NowPlayingIcon></NowPlayingIcon>, path: "/movies/now_playing" },
+    { label: <UpcomingIcon></UpcomingIcon>, path: "/movies/upcoming" },
+    { label: <FavoriteIcon></FavoriteIcon>, path: "/movies/favorites" },
+    { label: <MustWatchIcon></MustWatchIcon>, path: "/movies/mustwatch" },
   ];
 
   const handleMenuSelect = (pageURL) => {

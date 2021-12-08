@@ -33,7 +33,7 @@ const MustwatchMoviesPage = () => {
 
   return (
     <PageTemplate
-      title="Must watch Movies"
+      title="Must Watch Movies"
       movies={movies}
       action={(movie) => {
         return <RemoveFromMustWatches movie={movie} />
