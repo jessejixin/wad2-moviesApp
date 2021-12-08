@@ -1,16 +1,13 @@
-import { formatMs } from '@material-ui/core'
 import React ,{useRef ,useState}from 'react'
 import {Form,Button,Card, FormLabel, FormControl, Alert} from 'react-bootstrap'
-import { useAuth } from '../../contexts/authContext'
 import {Link, useHistory} from "react-router-dom";
-
+import { signInWithEmailAndPassword } from "@firebase/auth"
+import { auth } from "../../firebase"
 
 export default function LogInForm() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
-
-    const {logIn} = useAuth()
     const [error,setError] = useState("")
     const [loading,setLoading] = useState(false)
     const history = useHistory()
@@ -21,7 +18,8 @@ export default function LogInForm() {
         try{
             setError("")
             setLoading(true)
-         await logIn(emailRef.current.value,passwordRef.current.value)
+            signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value)
+            history.push("/")
         } catch{
             setError('Sign in Failed')
 
