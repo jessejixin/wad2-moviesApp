@@ -54,6 +54,9 @@ export default function LogInForm() {
         <div className="w-100 text-center mt-2">
             Do not have an account? <Link to="/signUp">Sign Up</Link>
         </div>
+        <div className="w-100 text-center mt-3">
+          <Link to="/ForgetPassword">Forget Password?</Link>
+        </div>
 
         </>
     )

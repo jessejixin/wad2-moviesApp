@@ -2,6 +2,9 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import AuthProvider from '../contexts/authContext'
 import LogInForm from '../components/login'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Signup from "../components/signup"
+import ForgetPassword from "../components/forgetPassword"
 
 export default function logInPage() {
     return (
@@ -12,7 +15,15 @@ export default function logInPage() {
         style={ {minHeight: "100vh"}}
         >
             <div className = "w-100" style ={{maxWidth:"400px"}}>
-            <LogInForm/>
+            <Router>
+          
+                <Switch>
+                        <Route path="/login" component={LogInForm} />
+                        <Route path="/signup" component={Signup} />
+                        <Route path="/forgetPassword" component={ForgetPassword} />
+                </Switch>
+          
+                </Router>
             </div>
         </Container>
         </AuthProvider>
