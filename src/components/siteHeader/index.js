@@ -18,6 +18,7 @@ import NowPlayingIcon from '@material-ui/icons/EventAvailable';
 import TopRateIcon from '@material-ui/icons/Star';
 import PopularIcon from '@material-ui/icons/Whatshot';
 import MustWatchIcon from '@material-ui/icons/ListAlt';
+import LoginIcon from '@material-ui/icons/Person';
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
@@ -33,6 +34,7 @@ const SiteHeader = ( { history }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const menuOptions = [
+    { label: <LoginIcon></LoginIcon> , path: "/signup" },
     { label: <HomeIcon></HomeIcon> , path: "/" },
     { label: <TopRateIcon></TopRateIcon>, path: "/movies/top_rated" },
     { label: <PopularIcon></PopularIcon>, path: "/movies/popular" },

@@ -15,6 +15,9 @@ import MustwatchMoviesPage from "./pages/mustwatchMoviesPage";
 import TopRatedPage from "./pages/topRatedPage";
 import PopularPage from "./pages/popularPage";
 import NowPlayingPage from "./pages/nowPlayingMoviesPage"
+import SignUpPage from "./pages/signUpPage";
+import LogInPage from "./pages/logInPage";
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +43,8 @@ const App = () => {
               <Route exact path="/movies/top_rated" component={TopRatedPage} />
               <Route exact path="/movies/popular" component={PopularPage} />
               <Route exact path="/movies/now_playing" component={NowPlayingPage} />
+              <Route exact path="/signUp" component={SignUpPage} />
+              <Route exact path="/logIn" component={LogInPage} />
               <Route path="/reviews/:id" component={MovieReviewPage} />
               <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
               <Route path="/movies/:id" component={MoviePage} />
