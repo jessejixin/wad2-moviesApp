@@ -20,7 +20,7 @@ import LogInPage from "./pages/logInPage";
 import LogOutPage from "./pages/logoutPage";
 import "bootstrap/dist/css/bootstrap.min.css"
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1,

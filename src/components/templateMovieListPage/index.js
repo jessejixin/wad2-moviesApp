@@ -4,7 +4,10 @@ import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
+import { queryClient } from "../..";
 
+export var sortMoviesBy="popularity.desc";
+export var update = false;
 const useStyles = makeStyles({
   root: {
     padding: "20px",
@@ -15,6 +18,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const classes = useStyles();
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const [sortMovies, setMovieSort] = useState("")
   const genreId = Number(genreFilter);
 
   let displayedMovies = movies
@@ -27,6 +31,11 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
+    if (type === "sort") {
+      setMovieSort(value);
+      sortMoviesBy=value;
+      queryClient.refetchQueries();
+    }
     else setGenreFilter(value);
   };
 
@@ -41,6 +50,7 @@ function MovieListPageTemplate({ movies, title, action }) {
             onUserInput={handleChange}
             titleFilter={nameFilter}
             genreFilter={genreFilter}
+            movieSort={sortMovies}
           />
         </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>
