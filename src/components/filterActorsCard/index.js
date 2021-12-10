@@ -28,7 +28,6 @@ export default function FilterActorCard(props) {
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value); 
   };
 
   const handleTextChange = (e, props) => {
