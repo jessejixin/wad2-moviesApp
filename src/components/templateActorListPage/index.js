@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 function ActorListPageTemplate({ actors, action}) {
   const classes = useStyles();
-  const [nameFilter, setNameFilter] = useState("");
+  const [nameFilter] = useState("");
 
   let displayedActors = actors
   return (
