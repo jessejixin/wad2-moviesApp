@@ -3,7 +3,6 @@ import { Card, Button, Alert } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 import { signOut  } from "@firebase/auth"
 import { auth } from "../../firebase"
-import { red } from "@material-ui/core/colors"
 
 export default function LogOut() {
   const [error, setError] = useState("")
@@ -14,7 +13,7 @@ export default function LogOut() {
     setError("")
 
     try {
-      signOut()
+      signOut(auth)
       history.push("/")
     } catch {
       setError("Failed to log out")
