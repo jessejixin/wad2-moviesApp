@@ -19,7 +19,8 @@ import TopRateIcon from '@material-ui/icons/Star';
 import PopularIcon from '@material-ui/icons/Whatshot';
 import MustWatchIcon from '@material-ui/icons/ListAlt';
 import LoginIcon from '@material-ui/icons/Person';
-import AccountBox from '@material-ui/icons/AccountBox'
+import AccountBox from '@material-ui/icons/AccountBox';
+import PeopleIcon from '@material-ui/icons/People'
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -45,6 +46,7 @@ const SiteHeader = ( { history }) => {
     { label: <UpcomingIcon></UpcomingIcon>, path: "/movies/upcoming" },
     { label: <FavoriteIcon></FavoriteIcon>, path: "/movies/favorites" },
     { label: <MustWatchIcon></MustWatchIcon>, path: "/movies/mustwatch" },
+    { label: <PeopleIcon></PeopleIcon> , path:"/actors/home"}
   ];
 
   const handleMenuSelect = (pageURL) => {
