@@ -7,7 +7,6 @@ import { auth } from "../../firebase"
 export default function LogOut() {
   const [error, setError] = useState("")
   const history = useHistory()
-  var currentUser = auth.currentUser
 
   async function handleLogout() {
     setError("")
@@ -26,7 +25,7 @@ export default function LogOut() {
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email} 
+          <strong>Email:</strong> {auth.currentUser.email} 
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
