@@ -1,8 +1,7 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom"; //Link } 
 import HomePage from "./pages/homePage";
-import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
@@ -21,6 +20,7 @@ import LogOutPage from "./pages/logoutPage";
 import ActorsPage from "./pages/actorsPage";
 import ActorDetailsPage from "./pages/actorDetailsPage"
 import "bootstrap/dist/css/bootstrap.min.css"
+const MoviePage = lazy(() => import("./pages/movieDetailsPage"));
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,6 +38,7 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
+        <Suspense fallback={<h1>Loading page</h1>}>
             {" "}
             <Switch>
               <Route exact path="/movies/mustwatch" component={MustwatchMoviesPage} />
@@ -57,6 +58,7 @@ const App = () => {
               <Route exact path="/" component={HomePage} />
               <Redirect from="*" to="/" />
             </Switch>
+            </Suspense>
       </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
