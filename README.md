@@ -94,3 +94,22 @@ Login page which uses authentication by firebase.
 
 + [TMDB API](https://developers.themoviedb.org/3).
 + [FIREBASE](https://firebase.google.com/docs/web/setup?authuser=0)
+
+
+# Assignment 1 - Agile Software Practice.
+
+## Automated Testing.
+
++ Actor Details Page Test
++ Log in Page Test
++ Top Rated Movies Page Test
++ Upcoming Movies Page Test
+
+## Continuous Integration.
+
++ Pipeline - Install, Build, and Test jobs.
+
+## Code Splitting.
+
+Added several Route-based Code Splitting.
+![ ](./readme_imgs/code-splitting.png)
