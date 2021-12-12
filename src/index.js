@@ -1,26 +1,26 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom"; //Link } 
-import HomePage from "./pages/homePage";
-import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
-import MovieReviewPage from "./pages/movieReviewPage";
-import SiteHeader from './components/siteHeader'
-import UpcomingMoviesPage from "./pages/UpcomingMoviesPage";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import MustwatchMoviesPage from "./pages/mustwatchMoviesPage"; 
-import TopRatedPage from "./pages/topRatedPage";
-import PopularPage from "./pages/popularPage";
-import NowPlayingPage from "./pages/nowPlayingMoviesPage"
 import SignUpPage from "./pages/signUpPage";
 import LogInPage from "./pages/logInPage";
 import LogOutPage from "./pages/logoutPage";
-import ActorsPage from "./pages/actorsPage";
-import ActorDetailsPage from "./pages/actorDetailsPage"
 import "bootstrap/dist/css/bootstrap.min.css"
 const MoviePage = lazy(() => import("./pages/movieDetailsPage"));
+const HomePage  = lazy(() => import("./pages/homePage"));
+const FavoriteMoviesPage = lazy(() => import("./pages/favoriteMoviesPage")); // NEW
+const MovieReviewPage = lazy(() => import("./pages/movieReviewPage"));
+const SiteHeader = lazy(() => import('./components/siteHeader'));
+const UpcomingMoviesPage = lazy(() => import("./pages/UpcomingMoviesPage"));
+const TopRatedPage = lazy(() => import( "./pages/topRatedPage"));
+const PopularPage = lazy(() => import("./pages/popularPage"));
+const NowPlayingPage = lazy(() => import("./pages/nowPlayingMoviesPage"));
+const ActorsPage = lazy(() => import( "./pages/actorsPage"));
+const ActorDetailsPage = lazy(() => import( "./pages/actorDetailsPage"));
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,10 +36,12 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <Suspense fallback={<h1> Loading component </h1>} >
         <SiteHeader />
+        </Suspense>
         <MoviesContextProvider>
-        <Suspense fallback={<h1>Loading page</h1>}>
             {" "}
+            <Suspense fallback={<h1>Loading page</h1>}>
             <Switch>
               <Route exact path="/movies/mustwatch" component={MustwatchMoviesPage} />
               <Route exact path="/reviews/form" component={AddMovieReviewPage} /> 
