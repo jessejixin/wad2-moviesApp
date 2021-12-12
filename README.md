@@ -20,15 +20,17 @@ This repository is for the Assgnment 1 of both Web App Development and Agile Sof
 ## Setup requirements.
 
 Run following commands to prepare environment :
+```
 npm install 
 npm install bootstrap
 npm install firebase
 npm install --save-dev http-server@13.0.2
 npm install --save-dev start-server-and-test@1.14.0
-
+```
 Create .env file in root directory and fill in the api key:
+```
 REACT_APP_TMDB_KEY=
-
+```
 ## API endpoints.
 
 + Upcoming Movies - /movies/upcoming
@@ -43,6 +45,7 @@ REACT_APP_TMDB_KEY=
 ### Component catalogue.
 
  No New Storybook Components
+ 
 ![](./readme_imgs/storybook.png)
 
 ### UI Design.
@@ -92,5 +95,5 @@ Login page which uses authentication by firebase.
 
 ## Independent learning (If relevant).
 
-+ [TMDB API](https://developers.themoviedb.org/3).
++ [TMDB API](https://developers.themoviedb.org/3)
 + [FIREBASE](https://firebase.google.com/docs/web/setup?authuser=0)
